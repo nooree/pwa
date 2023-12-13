@@ -1,6 +1,6 @@
 {
-  "name": "hello-pwa",
-  "short_name": "샘플 PWA앱",
+  "name": "hello-sample",
+  "short_name": "샘플앱",
   "icons": [{
     "src": "images/hello-icon-128.png",
       "sizes": "128x128",
