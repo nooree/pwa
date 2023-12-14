@@ -1,1 +1,6 @@
+@charset "utf-8";
 
+body {font-family:"Noto Sans Regular";font-size:2em;text-align:center;background-color:#fff;opacity: 0.8;background-size: 10px 10px;background-image: repeating-linear-gradient(45deg, #ededed 0, #ededed 1px, #fff 0, #fff 50%);}
+h1 {color:#000;font-size:1.5em;}
+button {color:#fff;font-size:0.5em;cursor:pointer;width:200px;height:50px;line-height:50px;text-align:center;border:0;border-radius:5px;background:#f4361e;}
+p {color:#000;font-size:0.7em;}
