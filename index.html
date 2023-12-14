@@ -16,16 +16,13 @@ button {color:#fff;font-size:0.8em;cursor:pointer;width:200px;height:50px;text-a
 
 <body>
   <h1>샘플앱 설치</h1>
-
   <button id="butInstall" type="button">
   설치하기
   </button>
-
 </body>
 
- <script src="js/main.js"></script>
- <script>
-   
+<script src="js/main.js"></script>
+<script>
 window.addEventListener('beforeinstallprompt', (event) => {
   //console.log('👍', 'beforeinstallprompt', event);
   // 나중에 이벤트를 활성화하려고 보관한다.
@@ -58,5 +55,5 @@ window.addEventListener('appinstalled', (event) => {
   // 이벤트 초기화 (리소스 가비지 처리) 
   window.deferredPrompt = null;
 });
-  </script>
+</script>
 </html>
