@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="shortcut icon" type="image/x-icon" href="./images/hello-icon-128.png">
+<link rel="manifest" crossorigin="use-credentials" href="./manifest.json">
+<meta name="viewport" id="meta_viewport" content="width=device-width,initial-scale=1.0,minimum-scale=0,maximum-scale=10">
+<meta name="HandheldFriendly" content="true">
+<meta name="format-detection" content="telephone=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" sizes="192x192" href="./images/hello-icon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="./images/hello-icon-512.png">
+<link rel="stylesheet" type="text/css" href="//t1.daumcdn.net/tistory_admin/www/style/top/font.css"/>
+<link href="./css/pwa.css" rel="stylesheet" type="text/css"/>
+
+<title>학습일기</title>
+</head>
+
+<body>
+  <h1>학습일기<br>앱설치</h1>
+
+  <button id="butInstall" type="button">
+  설치하기
+  </button>
+
+  <p>이 화면은<br>PWA(Progressive Web App)<br>Demo를 설치하는 화면입니다.</p>
+
+</body>
+
+ <script src="./js/main.js"></script>
+ <script>
+   
+window.addEventListener('beforeinstallprompt', (event) => {
+  //console.log('👍', 'beforeinstallprompt', event);
+  // 나중에 이벤트를 활성화하려고 보관한다.
+  window.deferredPrompt = event;
+  // 설치 버튼에 담긴 hidden 클래스를 제거한다. 
+  //divInstall.classList.toggle('hidden', false);
+});
+
+butInstall.addEventListener('click', async () => {
+  //console.log('👍', 'butInstall-clicked');
+  const promptEvent = window.deferredPrompt;
+  if (!promptEvent) {
+    // The deferred prompt isn't available.
+    return;
+  }
+  // 설치 prompt 호출!
+  promptEvent.prompt();
+  // 결과물 로깅 및 사용자 선택 저장
+  const result = await promptEvent.userChoice;
+  //console.log('👍', 'userChoice', result);
+  // 이벤트 초기화. prompt()는 한번만 호출할 수 있다.
+  window.deferredPrompt = null;
+  // 설치 버튼 다시 숨기기
+  //divInstall.classList.toggle('hidden', true);
+
+});
+
+window.addEventListener('appinstalled', (event) => {
+  //console.log('👍', 'appinstalled', event);
+  // 이벤트 초기화 (리소스 가비지 처리) 
+  window.deferredPrompt = null;
+});
+  </script>
+</html>
