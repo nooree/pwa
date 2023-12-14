@@ -24,3 +24,20 @@ self.addEventListener('fetch', function(e) {
     })
   );
 });
+
+self.addEventListener('activate', function(e) {
+  var newCacheList = ['pwacache'];
+  e.waitUntil(
+    caches.keys().then(function(cacheList) {
+      return Promise.all(
+        cacheList.map(function(cacheName) {
+          if (newCacheList.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      )
+    }).catch(function(error) {
+      return console.log(error);
+    })
+  );
+});
